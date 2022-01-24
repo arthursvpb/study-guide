@@ -1,0 +1,19 @@
+{
+  "name": "study-guide",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "config/*"
+    ]
+  },
+  "repository": "git@github.com:arthursvpb/Study-Guide.git",
+  "author": "Arthur Vasconcellos <contato@arthurvasconcellos.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@study-guide/eslint": "*",
+    "typescript": "^4.5.5"
+  }
+}
