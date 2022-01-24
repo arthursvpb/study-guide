@@ -1,3 +1,3 @@
-// const config = require('@study-guide/eslint');
+const config = require('@study-guide/eslint');
 
-// module.exports = config;
+module.exports = config;
