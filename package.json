@@ -9,7 +9,8 @@
 	"workspaces": {
 		"packages": [
 			"packages/*",
-			"config/*"
+			"config/*",
+			"shared/*"
 		]
 	},
 	"repository": "git@github.com:arthursvpb/Study-Guide.git",
