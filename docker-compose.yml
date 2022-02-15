@@ -1,1 +1,9 @@
-# TODO: Dockerify application
+services:
+  study-guide:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    ports:
+      - '8080:8080'
+      - '3000:3000'
+
