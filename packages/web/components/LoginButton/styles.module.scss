@@ -1,0 +1,21 @@
+.loginButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 0 1.5rem;
+
+	border: 0;
+	background-color: transparent;
+
+	font-weight: 600;
+
+	svg {
+		width: 22px;
+		height: 22px;
+
+		&.userIcon {
+			margin-right: 0.8rem;
+		}
+	}
+}

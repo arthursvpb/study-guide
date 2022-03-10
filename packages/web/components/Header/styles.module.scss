@@ -1,0 +1,52 @@
+.headerContainer {
+	height: 7rem;
+	border-bottom: 1px solid var(--gray-100);
+
+	.headerContent {
+		display: flex;
+		align-items: center;
+
+		height: 100%;
+		max-width: 1120px;
+
+		margin: 0 auto;
+		padding: 0 2rem;
+
+		nav {
+			display: inline-block;
+
+			a {
+				font-weight: 900;
+				font-size: 2rem;
+
+				line-height: 7rem;
+
+				transition: filter 0.3s;
+
+				&:hover {
+					filter: brightness(1.1);
+				}
+
+				span {
+					&.my {
+						color: var(--orange-500);
+					}
+
+					&.studies {
+						color: var(--green-500);
+					}
+				}
+
+				& + .dashboard {
+					font-size: 1.2rem;
+					font-weight: 600;
+					margin-left: 2.5rem;
+				}
+			}
+		}
+
+		button {
+			margin-left: auto;
+		}
+	}
+}
