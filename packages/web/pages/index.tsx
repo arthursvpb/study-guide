@@ -1,10 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 // import type { GetStaticProps } from 'next';
 // import Head from 'next/head';
 // import Image from 'next/image';
-// import styles from '../styles/Home.module.scss';
 
 // import { api } from '@study-guide/axios';
 import { Header } from '../components/Header';
+
+import styles from './home.module.scss';
 
 interface HomeProps {
 	helloWorld: string;
@@ -14,7 +16,17 @@ export default function Home({ helloWorld }: HomeProps) {
 	return (
 		<>
 			<Header />
-			{/* <h1>{helloWorld}</h1> */}
+
+			<main className={styles.contentContainer}>
+				<img src="/images/undraw_certification_aif8.svg" alt="Girl certified" />
+
+				<section className={styles.hero}>
+					<h1>
+						The study organizer for your <span>mind</span>.
+					</h1>
+					{/* <button>Get Started</button> */}
+				</section>
+			</main>
 		</>
 	);
 }
