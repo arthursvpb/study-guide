@@ -4,7 +4,6 @@
 // import Image from 'next/image';
 
 // import { api } from '@study-guide/axios';
-import { Header } from '../components/Header';
 import { GetStartedButton } from '../components/GetStartedButton';
 
 import styles from './home.module.scss';
@@ -16,7 +15,6 @@ interface HomeProps {
 export default function Home({ helloWorld }: HomeProps) {
 	return (
 		<>
-			<Header />
 			<main className={styles.contentContainer}>
 				<img src="/images/undraw_certification_aif8.svg" alt="Girl certified" />
 
