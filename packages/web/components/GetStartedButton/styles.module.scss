@@ -1,0 +1,29 @@
+.getStartedButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 4rem;
+	width: 250px;
+
+	margin-top: 3rem;
+
+	border: 0;
+	border-radius: 0.5rem;
+
+	background-color: var(--orange-500);
+	color: var(--gray-100);
+
+	font-size: 1.1rem;
+	font-weight: 600;
+
+	svg {
+		margin-right: 10px;
+	}
+
+	transition: filter 0.2s;
+
+	&:hover {
+		filter: brightness(1.1);
+	}
+}

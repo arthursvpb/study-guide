@@ -5,6 +5,7 @@
 
 // import { api } from '@study-guide/axios';
 import { Header } from '../components/Header';
+import { GetStartedButton } from '../components/GetStartedButton';
 
 import styles from './home.module.scss';
 
@@ -16,7 +17,6 @@ export default function Home({ helloWorld }: HomeProps) {
 	return (
 		<>
 			<Header />
-
 			<main className={styles.contentContainer}>
 				<img src="/images/undraw_certification_aif8.svg" alt="Girl certified" />
 
@@ -24,7 +24,8 @@ export default function Home({ helloWorld }: HomeProps) {
 					<h1>
 						The study organizer for your <span>mind</span>.
 					</h1>
-					{/* <button>Get Started</button> */}
+
+					<GetStartedButton />
 				</section>
 			</main>
 		</>
