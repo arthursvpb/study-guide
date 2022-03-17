@@ -1,11 +1,11 @@
-import { InputHTMLAttributes, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
-import styles from './styles.module.scss';
+// import styles from './styles.module.scss';
 
 interface InputProps {
 	name: string;
-	title: string;
+	label: string;
 	placeholder: string;
 	icon: string;
 	type: string;
@@ -13,7 +13,7 @@ interface InputProps {
 
 export function Input({
 	name,
-	title,
+	label,
 	placeholder,
 	icon,
 	type,
@@ -34,13 +34,13 @@ export function Input({
 		<>
 			{/* <img src={icon} /> */}
 
-			<p>{title}</p>
+			{!!label && <label htmlFor={fieldName}>{label}</label>}
 
 			<input
-				ref={inputRef}
 				id={fieldName}
+				name={fieldName}
+				ref={inputRef}
 				defaultValue={defaultValue}
-				name={name}
 				placeholder={placeholder}
 				type={type}
 				{...rest}
