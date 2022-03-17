@@ -15,7 +15,9 @@ export function Header() {
 							<span className={styles.studies}>Studies</span>
 						</a>
 					</Link>
-					<a className={styles.dashboard}>Dashboard</a>
+					<Link href="/dashboard" passHref>
+						<a className={styles.dashboard}>Dashboard</a>
+					</Link>
 				</nav>
 				<LoginButton />
 			</div>
