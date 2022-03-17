@@ -1,12 +1,12 @@
-import Link from 'next/link';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 import { Form } from '@unform/web';
 import { SubmitHandler } from '@unform/core';
 
 import { Input } from '../../components/Input';
 
-import styles from './styles.module.scss';
+import styles from '../signup/styles.module.scss';
 
 interface FormData {
 	name: string;
@@ -25,18 +25,11 @@ export default function SignUp() {
 
 	return (
 		<div className={styles.signUpContainer}>
-			<h1>Welcome. Sign up now!</h1>
-			<p>Start planning your studies.</p>
+			<h1>Welcome back!</h1>
+			<p>Continue planning your studies.</p>
 
 			<div className={styles.formContainer}>
 				<Form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
-					<Input
-						name="name"
-						label="Full Name"
-						placeholder="Ex.: John Doe"
-						type="text"
-						icon="imagem"
-					/>
 					<Input
 						name="email"
 						label="E-mail"
@@ -51,23 +44,16 @@ export default function SignUp() {
 						type="password"
 						icon="imagem"
 					/>
-					<Input
-						name="repeatPassword"
-						label="Repeat password"
-						placeholder="************"
-						type="password"
-						icon="imagem"
-					/>
 
 					<p>
-						Already registered?{' '}
-						<Link href="/login" passHref>
-							<a>Login now</a>
+						Doesnt have an account?{' '}
+						<Link href="/signup" passHref>
+							<a>Create an account</a>
 						</Link>
 						.
 					</p>
 
-					<button type="submit">Create account</button>
+					<button type="submit">Login</button>
 				</Form>
 			</div>
 		</div>

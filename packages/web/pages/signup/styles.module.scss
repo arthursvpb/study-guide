@@ -10,4 +10,13 @@
 		color: var(--gray-500);
 		font-weight: 500;
 	}
+
+	.formContainer {
+		margin: 2rem 0;
+
+		.form {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 }

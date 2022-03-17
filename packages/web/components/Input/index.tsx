@@ -5,7 +5,7 @@ import { useField } from '@unform/core';
 
 interface InputProps {
 	name: string;
-	label: string;
+	label?: string;
 	placeholder: string;
 	icon: string;
 	type: string;
