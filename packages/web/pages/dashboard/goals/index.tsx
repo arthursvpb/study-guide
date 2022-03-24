@@ -1,12 +1,25 @@
 import styles from './styles.module.scss';
 
 import { FiCrosshair, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import Link from 'next/link';
 
 export default function Goals() {
 	const goals = [
-		{ id: 1, name: 'Back-end Developer' },
-		{ id: 2, name: 'Front-end Developer' },
-		{ id: 3, name: 'Full Stack Developer' }
+		{
+			id: 1,
+			name: 'Back-end Developer',
+			description: 'My path to become a back-end developer'
+		},
+		{
+			id: 2,
+			name: 'Front-end Developer',
+			description: 'My path to become a front-end developer'
+		},
+		{
+			id: 3,
+			name: 'Full Stack Developer',
+			description: 'My path to become a full stack developer'
+		}
 	];
 
 	return (
@@ -15,10 +28,16 @@ export default function Goals() {
 
 			<div className={styles.goals}>
 				{goals.map(goal => (
-					<button className={styles.goal} key={goal.id}>
-						<h2>{goal.name}</h2>
-						<FiCrosshair />
-					</button>
+					<Link
+						href={`/dashboard/goals/goal/${goal.id}`}
+						passHref
+						key={goal.id}
+					>
+						<button className={styles.goal}>
+							<h2>{goal.name}</h2>
+							<FiCrosshair />
+						</button>
+					</Link>
 				))}
 			</div>
 
