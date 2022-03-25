@@ -22,7 +22,6 @@ export function Modal({ children, isOpen = false, ...rest }: ModalProps) {
 		<ReactModal
 			isOpen={isOpen}
 			style={customStyles}
-			contentLabel="Example Modal"
 			{...rest}
 		>
 			{children}

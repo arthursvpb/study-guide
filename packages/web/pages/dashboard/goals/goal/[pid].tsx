@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { Modal as AddNewTopicModal } from '../../../../components/Modal';
 
+import { Form } from '@unform/web';
+import { SubmitHandler } from '@unform/core';
+
+import { Input } from '../../../../components/Input';
+
 import styles from './styles.module.scss';
 
 export default function GoalName() {
+	const formRef = useRef(null);
+	const handleSubmit: SubmitHandler = (data: FormData, { reset }) => {
+		console.log(data);
+
+		reset();
+	};
+
 	const [isOpen, setIsOpen] = useState(false);
 
 	const goals = [
@@ -46,8 +58,26 @@ export default function GoalName() {
 
 			<button onClick={() => setIsOpen(true)}>Add a new topic</button>
 			<AddNewTopicModal isOpen={isOpen}>
-				<h1>Children</h1>
-				<button onClick={() => setIsOpen(false)}>Close</button>
+				<Form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
+					{/* Input add/remove fields dynamically */}
+					<Input
+						name="name"
+						label="Topic name"
+						placeholder="Ex.: HTTP"
+						type="text"
+						icon="imagem"
+					/>
+					<Input
+						name="resources"
+						label="Resources"
+						placeholder="Youtube - HTTP Tutorial"
+						type="textarea"
+						icon="imagem"
+					/>
+					{/* <button>New resource</button> */}
+					<button type="submit">Save</button>
+					<button onClick={() => setIsOpen(false)}>Close</button>
+				</Form>
 			</AddNewTopicModal>
 		</div>
 	) : (
