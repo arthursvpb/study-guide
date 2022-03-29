@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  studyguide_db:
+    image: postgres
+    container_name: studyguide-db
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: study-guide-pg
+    ports:
+      - 5432:5432
