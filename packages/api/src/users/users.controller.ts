@@ -39,4 +39,15 @@ export class UsersController {
 	remove(@Param('id') id: string) {
 		return this.usersService.remove({ id });
 	}
+
+	@Post('/auth')
+	async authenticate(@Body() data: Prisma.UserCreateInput) {
+		const user = this.usersService.authenticate(data);
+
+		if (user) {
+			return user;
+		}
+
+		return 'Wrong username or password';
+	}
 }

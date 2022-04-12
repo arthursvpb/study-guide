@@ -12,6 +12,18 @@ export class UsersService {
 		return this.prisma.user.create({ data });
 	}
 
+	async authenticate(data: Prisma.UserCreateInput) {
+		const user = await this.findOne({ email: data.email });
+
+		if (!user) {
+			return 'No user found';
+		}
+
+		if (user.password === data.password) {
+			return user;
+		}
+	}
+
 	async findAll(params: {
 		skip?: number;
 		take?: number;
