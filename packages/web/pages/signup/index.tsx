@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 import { useRef } from 'react';
 
 import { Form } from '@unform/web';
 import { SubmitHandler } from '@unform/core';
 
 import { Input } from '../../components/Input';
+
+import { api } from '../../../../shared/axios';
 
 import styles from './styles.module.scss';
 
@@ -16,11 +20,28 @@ interface FormData {
 }
 
 export default function SignUp() {
+	const router = useRouter();
 	const formRef = useRef(null);
-	const handleSubmit: SubmitHandler = (data: FormData, { reset }) => {
-		console.log(data);
 
-		reset();
+	const handleSubmit: SubmitHandler = async (data: FormData, { reset }) => {
+		const { name, email, password, repeatPassword } = data;
+
+		try {
+			if (!name || !email || !password) throw new Error('Invalid data');
+
+			if (password !== repeatPassword) {
+				throw new Error('Password does not match');
+			}
+
+			const response = await api.post('/users', { name, email, password });
+
+			alert(JSON.stringify(response, null, 2));
+			reset();
+
+			router.push('/login');
+		} catch (error) {
+			alert(error);
+		}
 	};
 
 	return (
