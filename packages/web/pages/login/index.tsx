@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
+import { AuthContext } from '../../contexts/auth';
 
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -17,21 +18,24 @@ interface FormData {
 	password: string;
 }
 
-export default function SignUp() {
+export default function Login() {
+	const { signIn } = useContext(AuthContext);
 	const router = useRouter();
 	const formRef = useRef(null);
 
 	const handleSubmit: SubmitHandler = async (data: FormData, { reset }) => {
 		const { email, password } = data;
 
-		console.log(email, password);
-
 		try {
 			if (!email || !password) throw new Error('Invalid data');
 
 			const { data } = await api.post('/users/auth', { email, password });
 
+			// delete data.password;
+
 			alert(JSON.stringify(data, null, 2));
+			signIn(data);
+
 			reset();
 
 			router.push('/dashboard');
