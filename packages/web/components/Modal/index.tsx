@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import ReactModal from 'react-modal';
 
 interface ModalProps {
@@ -19,11 +19,7 @@ const customStyles = {
 
 export function Modal({ children, isOpen = false, ...rest }: ModalProps) {
 	return (
-		<ReactModal
-			isOpen={isOpen}
-			style={customStyles}
-			{...rest}
-		>
+		<ReactModal isOpen={isOpen} style={customStyles} {...rest}>
 			{children}
 		</ReactModal>
 	);
