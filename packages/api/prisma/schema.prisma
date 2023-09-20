@@ -12,21 +12,36 @@ model User {
   email    String @unique
   name     String
   password String
-  goals    Goal[]
+
+  goals Goal[]
 
   @@map("users")
 }
 
 model Goal {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
-  topics      Json?
-
-  created_at DateTime @default(now())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
 
+  topics Topic[]
+
   @@map("goals")
+}
+
+model Topic {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  goal    Goal   @relation(fields: [goal_id], references: [id])
+  goal_id String
+
+  @@map("topics")
 }
