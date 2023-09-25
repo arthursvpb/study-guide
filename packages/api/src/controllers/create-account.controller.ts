@@ -1,53 +1,29 @@
-import {
-	Controller,
-	Get,
-	Post,
-	Body,
-	Put,
-	Param,
-	Delete
-} from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, UsePipes } from '@nestjs/common';
 
 import { Prisma } from '@prisma/client';
-import { UsersService } from './users.service';
+import { PrismaService } from 'src/database/prisma.service';
+
+import { z } from 'zod';
+
+import { hashSync } from 'bcryptjs';
+import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
+
+const bodySchemaValidator = z.object({
+	name: z.string(),
+	email: z.string().email(),
+	password: z.string()
+});
 
 @Controller('accounts')
 export class CreateAccountController {
-	constructor(private readonly usersService: UsersService) {}
+	constructor(private prisma: PrismaService) {}
 
 	@Post()
-	create(@Body() data: Prisma.UserCreateInput) {
-		return this.usersService.create(data);
+	@HttpCode(201)
+	@UsePipes(new ZodValidationPipe(bodySchemaValidator))
+	handle(@Body() data: Prisma.UserCreateInput) {
+		const user = { ...data, password: hashSync(data.password, 8) };
+
+		return this.prisma.user.create({ data: user });
 	}
-
-	// @Get()
-	// findAll() {
-	// 	return this.usersService.findAll({});
-	// }
-
-	// @Get(':id')
-	// findOne(@Param('id') id: string) {
-	// 	return this.usersService.findOne({ id });
-	// }
-
-	// @Put(':id')
-	// update(@Param('id') id: string, @Body() data: Prisma.UserUpdateInput) {
-	// 	return this.usersService.update({ where: { id }, data });
-	// }
-
-	// @Delete(':id')
-	// remove(@Param('id') id: string) {
-	// 	return this.usersService.remove({ id });
-	// }
-
-	// @Post('/auth')
-	// async authenticate(@Body() data: Prisma.UserCreateInput) {
-	// 	const user = this.usersService.authenticate(data);
-
-	// 	if (user) {
-	// 		return user;
-	// 	}
-
-	// 	return 'Wrong username or password';
-	// }
 }
