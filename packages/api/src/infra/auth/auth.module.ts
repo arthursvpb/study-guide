@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { ENV_KEYS, Env } from 'src/env';
+import { ENV_KEYS, Env } from '@/infra/env';
 import { JwtStrategy } from './jwt.strategy';
 
 const useFactory = (config: ConfigService<Env, true>) => ({

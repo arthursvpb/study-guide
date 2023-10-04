@@ -1,12 +1,12 @@
 import { Controller, Post, Body, HttpCode, UsePipes } from '@nestjs/common';
 
 import { Prisma } from '@prisma/client';
-import { PrismaService } from 'src/database/prisma.service';
+import { PrismaService } from '@/infra/database/prisma.service';
 
 import { z } from 'zod';
 
 import { hashSync } from 'bcryptjs';
-import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
+import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 
 const bodySchemaValidator = z.object({
 	name: z.string(),

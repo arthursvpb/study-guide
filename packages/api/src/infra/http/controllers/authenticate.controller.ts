@@ -6,12 +6,12 @@ import {
 	UnauthorizedException
 } from '@nestjs/common';
 
-import { PrismaService } from 'src/database/prisma.service';
+import { PrismaService } from '@/infra/database/prisma.service';
 
 import { z } from 'zod';
 
 import { JwtService } from '@nestjs/jwt';
-import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
+import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { compare } from 'bcryptjs';
 
 const bodySchemaValidator = z.object({
