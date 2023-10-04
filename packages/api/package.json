@@ -10,6 +10,10 @@
 		"db:start:dev": "docker-compose -p study-guide up --attach study-guide-db",
 		"db:migrate:dev": "prisma migrate dev"
 	},
+	"engines": {
+		"node": ">=18",
+		"yarn": ">=1.22.19"
+	},
 	"dependencies": {
 		"@nestjs/common": "^8.1.1",
 		"@nestjs/config": "^3.1.1",

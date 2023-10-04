@@ -9,6 +9,10 @@
 		"start": "next start",
 		"lint": "next lint"
 	},
+	"engines": {
+		"node": ">=18",
+		"yarn": ">=1.22.19"
+	},
 	"dependencies": {
 		"@study-guide/axios": "*",
 		"@unform/core": "^2.1.6",
