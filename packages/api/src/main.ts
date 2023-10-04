@@ -8,9 +8,9 @@ const bootstrap = async () => {
 	app.enableCors();
 
 	const configService = app.get<ConfigService<Env, true>>(ConfigService);
-	const PORT = configService.get(ENV_KEYS.PORT, { infer: true });
+	const SERVER_PORT = configService.get(ENV_KEYS.SERVER_PORT, { infer: true });
 
-	return app.listen(PORT);
+	return app.listen(SERVER_PORT);
 };
 
 bootstrap();
