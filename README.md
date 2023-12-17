@@ -1,17 +1,11 @@
-# [WIP] Study Guide
+# MyStudies
 
-- Working on documentation...
-
-## Back-end commands
-
-### Start pg
+copy .env from .env.example
 
 ```sh
-docker-compose -p study-guide up -d
-```
-
-### If there was a problem with prisma
-
-```sh
-npx prisma generate
+yarn # will install all dependencies from monorepo
+yarn workspace @study-guide/web dev # run front-end
+yarn workspace @study-guide/api db:start:dev # run postgres instance
+yarn workspace @study-guide/api db:migrate:dev # run migrations
+yarn workspace @study-guide/api start:dev # run nest js api
 ```

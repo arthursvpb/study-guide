@@ -7,8 +7,8 @@
 		"prebuild": "rimraf dist",
 		"build": "nest build",
 		"start:dev": "nest start --watch",
-		"db:start:dev": "docker-compose -p study-guide up --attach study-guide-db",
-		"db:migrate:dev": "prisma migrate dev"
+		"db:start:dev": "docker compose -p study-guide up --attach study-guide-db",
+		"db:migrate:dev": "prisma migrate dev --schema ./src/infra/database/schema.prisma"
 	},
 	"engines": {
 		"node": ">=18",
